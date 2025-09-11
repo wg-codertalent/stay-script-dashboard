@@ -39,7 +39,7 @@ export function LoginForm({
         password,
       });
       if (error) throw error;
-      router.push("/dashboard");
+      router.push("/");
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
@@ -56,7 +56,7 @@ export function LoginForm({
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback?next=/dashboard`,
+          redirectTo: `${window.location.origin}/auth/callback?next=/`,
           queryParams: {
             access_type: 'offline',
             prompt: 'consent',
